@@ -3,7 +3,7 @@ package day11.task1;
 public class Courier implements Worker {
     private int salary;
     private boolean isPayed;
-    Warehouse warehouse;
+    private Warehouse warehouse;
     public Courier(int salary, boolean isPayed, Warehouse warehouse){
         this.salary=salary;
         this.isPayed=isPayed;
@@ -18,13 +18,13 @@ public class Courier implements Worker {
     @Override
     public void doWork() {
         salary+=100;
-        warehouse.countDeliveredOrders++;
+        warehouse.increaseCountDeliveredOrders();
     }
 
     @Override
     public void bonus() {
-        if(warehouse.countDeliveredOrders%10000==0){
-            if(isPayed==false){
+        if(warehouse.getCountDeliveredOrders()%10000==0){
+            if(!isPayed){
                 salary+=50000;
                 isPayed=true;
                 System.out.println("бонус "+ 50000);

@@ -1,10 +1,12 @@
 package day11.task1;
 
 public class Warehouse {
-    public int countPickedOrders;
-    public int countDeliveredOrders;
+    private int countPickedOrders;
+    private int countDeliveredOrders;
     public int getCountPickedOrders() { return countPickedOrders;}
     public int getCountDeliveredOrders() { return countDeliveredOrders;}
+    public int increaseCountPickedOrders(){return countPickedOrders++;}
+    public int increaseCountDeliveredOrders(){ return countDeliveredOrders++;}
 
     @Override
     public String toString() {

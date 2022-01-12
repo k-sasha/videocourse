@@ -11,37 +11,21 @@ public class Task3 {
                 array[i][j]= rand.nextInt(51);
             }
         }
-//        for(int [] i: array){
-//            for (int j: i){
-//                System.out.print(j + " ");
-//            }
-//            System.out.println();
-//        }
-        int [] sum = new int[12];
-        for(int i=0; i< sum.length && i< array.length; i++) {
-            int sumArray=0;
-            for(int j=0; j< array[i].length; j++){
-                sumArray+=array[i][j];
+
+        int maxSum=0;
+        int indexMax=0;
+        for(int i=0; i<array.length; i++){
+            int sumLine=0;
+            for(int j=0; j<array[i].length; j++){
+                sumLine+=array[i][j];
             }
-            sum[i]=sumArray;
-//            System.out.println(sum[i]);
+//            System.out.println("sumLine = "+ sumLine);
+            if(sumLine>=maxSum){
+                maxSum=sumLine;
+                indexMax=i;
+//                System.out.println("index became "+ indexMax);
+            }
         }
-
-//        System.out.println();
-//        for(int i: sum){
-//            System.out.print(i + " ");
-//        }
-//        System.out.println();
-        int index=0;
-        int max=0;
-        for (int i =0; i< sum.length; i++){
-
-            if(sum[i]>max || sum[i]==max){
-                max=sum[i];
-            }else {continue;}
-            index=i;
-            // System.out.println(i);
-        }
-        System.out.println(index);
+        System.out.println(indexMax);
     }
 }

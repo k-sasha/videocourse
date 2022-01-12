@@ -15,10 +15,11 @@ public class Player {
         }
     }
     public void run(Player p1){
-        if(stamina!=0){
-        stamina--;}
-        else{
+        if(stamina>0){
+        stamina--;
+        if(stamina==0){
             countPlayers--;
+          }
         }
     }
     public static void info(){

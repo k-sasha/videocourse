@@ -18,12 +18,12 @@ public class Picker implements Worker{
     @Override
     public void doWork() {
         salary+=80;
-        warehouse.countPickedOrders++;
+        warehouse.increaseCountPickedOrders();
     }
 
     @Override
     public void bonus() {
-        if(warehouse.countPickedOrders%10000==0){
+        if(warehouse.getCountPickedOrders()%10000==0){
             if(isPayed==false ){
             salary+=70000;
             isPayed=true;

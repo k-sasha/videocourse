@@ -5,8 +5,7 @@ public class Task1 {
         long startTime = System.currentTimeMillis(); //сохраняем время перед запуском блока кода
         String sAll="";
 for (int i=0; i<20000; i++){
-    String s=i+" ";
-        sAll =sAll+s;
+        sAll =sAll+i+" ";
 }
         System.out.println(sAll);
         long stopTime = System.currentTimeMillis(); //сохраняем время после того, как код отработал
