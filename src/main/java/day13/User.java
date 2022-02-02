@@ -19,15 +19,12 @@ public class User {
     public void subscribe(User user){ subscriptions.add(user);}
 
     public boolean isSubscribed(User user){
-        if(subscriptions.contains(user)){
-            return true;
-        } else{ return false;}
+        return subscriptions.contains(user);
+
     }
 
     public boolean isFriend(User user){
-        if(subscriptions.contains(user) && user.getSubscriptions().contains(this)){
-            return true;
-        } else{ return false;}
+        return this.isSubscribed(user) && user.isSubscribed(this);
     }
 
     public void sendMessage(User user, String text){
