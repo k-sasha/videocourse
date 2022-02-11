@@ -35,23 +35,20 @@ public class Person {
            for(int i=0; i<listString.size(); i++){
                String [] line = listString.get(i).split(" ");
                int age = Integer.parseInt(line[1]);
-               if(age<0){
-                   try {
-                       throw new IlligalAge();
-                   } catch (IlligalAge e) {
-                       System.out.println("Некорректный входной файл");
-                   }
-               }else{
-               list.add(new Person(line[0], age));}
+               if(age<0){ throw new IllegalAge("Некорректный входной файл");}
+               list.add(new Person(line[0], age));
            }
        } catch (FileNotFoundException e) {
            System.out.println("Файл не найден");
+       }
+       catch (IllegalAge e){
+           System.out.println(e.getMessage());
        }
        System.out.println(list);
        return list;
    }
 }
 
-class IlligalAge extends IOException{
-    IlligalAge(){}
+class IllegalAge extends IOException{
+    IllegalAge(String message){}
 }

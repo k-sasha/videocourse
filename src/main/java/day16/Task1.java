@@ -16,20 +16,13 @@ public class Task1 {
             Scanner scanner = new Scanner(file);
             String line = scanner.nextLine();
             String [] numbersString = line.split(" ");
-            double [] numbers = new double[numbersString.length];
-            int counter =0;
-            for(String s: numbersString){
-                numbers[counter++]=Integer.parseInt(s);
-            }
-            //System.out.println(Arrays.toString(numbers));
             double sum = 0;
-            for(Double d: numbers){
-                sum+=d;
+            for(String s: numbersString){
+                sum+=Double.parseDouble(s);
             }
-            double average = sum/ numbers.length;
+            double average = sum/ numbersString.length;
             System.out.print(average +" --> ");
             System.out.printf("%.3f",average);
-
         } catch (FileNotFoundException e) {
             System.out.println("file not found");
         }

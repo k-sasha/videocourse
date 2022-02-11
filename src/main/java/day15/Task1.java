@@ -15,37 +15,27 @@ public class Task1 {
     }
 
     public static void missingShoes(File file, File file2){
-        List<String> allPosition = new ArrayList<>();
         List<String> allMissingShoes = new ArrayList<>();
         try {
             Scanner scanner = new Scanner(file);
             while (scanner.hasNextLine()){
-                allPosition.add(scanner.nextLine());
-            }
-            for(int i=0; i< allPosition.size(); i++){
-                String [] separatePosition = allPosition.get(i).split(";");
-                if(separatePosition.length!=3){
-                    throw new IllegalArgumentException("incorrect number of positions");
-                }else if(allPosition.isEmpty()){
-                    throw new IllegalArgumentException("file is empty");
-                }
-                else {
-                    if(Integer.parseInt(separatePosition[2])==0){
-                        allMissingShoes.add(separatePosition[0] + ","+separatePosition[1]+ ","+separatePosition[2]);
+                String line = scanner.nextLine();
+                String [] separatePosition = line.split(";");
+                if(separatePosition.length!=3){ throw new IllegalArgumentException("incorrect number of positions");}
+                if(line.isEmpty()){throw new IllegalArgumentException("file is empty");}
+                if(Integer.parseInt(separatePosition[2])==0){
+                    allMissingShoes.add(separatePosition[0] + ","+separatePosition[1]+ ","+separatePosition[2]);
                     }
-                }
             }
             System.out.println(allMissingShoes);
-        } catch (FileNotFoundException e) {
-            System.out.println("file not found");
-        }
-        try{PrintWriter pw = new PrintWriter(file2);
+            PrintWriter pw = new PrintWriter(file2);
             for(int i=0; i<allMissingShoes.size(); i++){
                 pw.println(allMissingShoes.get(i));}
             pw.close();
-        }
-        catch(FileNotFoundException e){
+        } catch (FileNotFoundException e) {
             System.out.println("file not found");
+        } catch (IllegalArgumentException e){
+            System.out.println(e.getMessage());
         }
     }
 }

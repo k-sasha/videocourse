@@ -21,13 +21,16 @@ public class Task2  {
                         }
                         for(int i=0; i< list.size(); i++){
                         if(list.get(i).contains("-")){
-                                System.out.println("Некорректный входной файл");
-                                list.clear();
+                                throw new IllegalArgumentException("Некорректный входной файл");
                         }}
                         System.out.println(list);
                         scanner.close();
                 } catch (FileNotFoundException e) {
                         System.out.println("Файл не найден");
+                }
+                catch (IllegalArgumentException e){
+                        System.out.println(e.getMessage());
+                        list.clear();
                 }
                 return list;
         }

@@ -15,25 +15,19 @@ public class Task1 {
             Scanner scanner = new Scanner(file);
             String line = scanner.nextLine();
             String [] numbersString = line.split(" ");
-            if(numbersString.length!=10){
-                try{throw new IllegalArgumentException();}
-                catch (IllegalArgumentException e){
-                    System.out.println("Некорректный входной файл");
-                }
-            } else {
-            int [] numbers = new int[10];
-            int counter =0;
+            if(numbersString.length!=10){ throw new IllegalArgumentException("Некорректный входной файл");}
+            else {
+                int sum=0;
             for(String s: numbersString){
-                numbers[counter++]=Integer.parseInt(s);
-            }
-            int sum=0;
-            for(int i: numbers){
-                sum+=i;
+                sum+=Integer.parseInt(s);
             }
             System.out.println(sum);}
             scanner.close();
         } catch (FileNotFoundException e) {
             System.out.println("Файл не найден");
+        }
+        catch (IllegalArgumentException e){
+            System.out.println(e.getMessage());
         }
     }
 }
