@@ -1,9 +1,9 @@
 package day18;
 
 public class Node {
-    int value;
-    Node leftSon;
-    Node rightSon;
+    private int value;
+    private Node leftSon;
+    private Node rightSon;
     public Node(int value){
         this.value=value;
         leftSon=null;
@@ -19,6 +19,15 @@ public class Node {
             if(root.rightSon==null){
                 root.rightSon= new Node(i);
             } else{ insert(i, root.rightSon);}
+        }
+    }
+
+    public static void dfs(Node root){
+        if(root!=null){
+            if(root.leftSon!=null){
+                dfs(root.leftSon);}
+            System.out.print(root.value+" ");
+            if(root.rightSon!=null){ dfs(root.rightSon);}
         }
     }
 }

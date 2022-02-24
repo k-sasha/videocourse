@@ -1,5 +1,7 @@
 package day18;
 
+import static day18.Node.dfs;
+
 public class Task3 {
     public static void main(String[] args) {
         Node root = new Node(20);
@@ -19,12 +21,6 @@ public class Task3 {
         dfs(root);
 
     }
-    public static void dfs(Node root){
-        if(root!=null){
-            if(root.leftSon!=null){
-                dfs(root.leftSon);}
-            System.out.print(root.value+" ");
-            if(root.rightSon!=null){ dfs(root.rightSon);}
-            }
-        }
+
+
     }
