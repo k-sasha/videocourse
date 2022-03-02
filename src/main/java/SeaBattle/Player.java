@@ -39,24 +39,30 @@ public class Player {
     }
 
     public static void makeMoves(Player player1, Player player2, Scanner scanner){
+        System.out.println();
+        System.out.println("корабли расставлены!");
         Random random=new Random();
         int firstPlayer= random.nextInt(2)+1;
             if(firstPlayer==player1.id){
+                System.out.println();
                 System.out.println("ходит игрок 1. Введи координаты x,y");
+                player2.myfield.printFieldEnemy();
                 Point point;
                 do {point = coordinateCheck(scanner);
                 }while (point==null);
                 player1.hit(player2,point);
-                //player2.myfield.printField();
+                player2.myfield.printFieldEnemy();
                 if(result.equals("Попадание!") || result.equals("Утопил")){player1.objectState="Next";player2.objectState="Wait";}
                 else {player2.objectState="Next";player1.objectState="Wait";}
             }else {
+                System.out.println();
                 System.out.println("ходит игрок 2. Введи координаты x,y");
+                player1.myfield.printFieldEnemy();
                 Point point;
                 do {point = coordinateCheck(scanner);
                 }while (point==null);
                 player2.hit(player1,point);
-                //player1.myfield.printField();
+                player1.myfield.printFieldEnemy();
                 if(result.equals("Попадание!") || result.equals("Утопил")){player2.objectState="Next";player1.objectState="Wait";}
                 else {player1.objectState="Next";player2.objectState="Wait";}
             }
@@ -65,12 +71,14 @@ public class Player {
          while (true){
             if (player1.objectState.equals("Next")) {
                 do {
+                    System.out.println();
                     System.out.println("Игрок " + player1.id + " ходи. Введи координаты x,y");
+                    player2.myfield.printFieldEnemy();
                     Point point;
                     do {point = coordinateCheck(scanner);
                     }while (point==null);
                     player1.hit(player2, point);
-                   // player2.myfield.printField();
+                    player2.myfield.printFieldEnemy();
                     if (result.equals("Мимо")) {player2.objectState="Next";player1.objectState="Wait"; break;}
                     if (player2.AreAllShipsSunk()) {
                         throw new IllegalArgumentException("Игра окончена. Игрок " + player1.id + " победил!");
@@ -80,14 +88,17 @@ public class Player {
 
             if (player2.objectState.equals("Next")) {
                 do {
+                    System.out.println();
                     System.out.println("Игрок " + player2.id + " ходи. Введи координаты x,y");
+                    player1.myfield.printFieldEnemy();
                     Point point;
                     do {point = coordinateCheck(scanner);
                     }while (point==null);
                     player2.hit(player1, point);
-                    //player1.myfield.printField();
+                    player1.myfield.printFieldEnemy();
                     if (result.equals("Мимо")){ player1.objectState="Next";player2.objectState="Wait";break;}
                     if (player1.AreAllShipsSunk()) {
+                        System.out.println();
                         throw new IllegalArgumentException("Игра окончена. Игрок " + player2.id + " победил!");
                     }
                 } while (result.equals("Попадание!") || result.equals("Утопил"));

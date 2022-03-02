@@ -44,4 +44,21 @@ public class Field {
         System.out.println("⏹️ 0️⃣ 1️⃣ 2️⃣ 3️⃣ 4️⃣ 5️⃣ 6️⃣ 7️⃣ 8️⃣ 9️⃣ ➡️ y");
     }
 
+    public void printFieldEnemy(){
+        String[] array = {"0️⃣","1️⃣","2️⃣","3️⃣","4️⃣","5️⃣","6️⃣","7️⃣","8️⃣","9️⃣"};
+        int counter=0;
+        System.out.println("x        field "+id);
+        System.out.println("⬆️");
+        for(FieldPiece [] i: field){
+            System.out.print(array[counter++]+" ");
+            for(FieldPiece j: i){
+                if(j==FieldPiece.HALO || j==FieldPiece.SHIP){
+                    System.out.print(FieldPiece.EMPTY.getPicture() +" ");
+                }else{System.out.print(j.getPicture() +" ");}
+            }
+            System.out.println();
+        }
+        System.out.println("⏹️ 0️⃣ 1️⃣ 2️⃣ 3️⃣ 4️⃣ 5️⃣ 6️⃣ 7️⃣ 8️⃣ 9️⃣ ➡️ y");
+    }
+
 }
