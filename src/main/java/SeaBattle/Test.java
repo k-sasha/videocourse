@@ -45,7 +45,7 @@ public class Test {
                 field1.addShip(ships1[i]);}
             }while (ships1[i].array==null);
         }
-        field1.printField();
+       // field1.printField();
         System.out.println();
 
         System.out.println("Теперь расставляет корабли на поле Player 2. Другой игрок не смотри!");
@@ -56,7 +56,7 @@ public class Test {
                     field2.addShip(ships2[i]);}
             }while (ships2[i].array==null);
         }
-        field2.printField();
+        //field2.printField();
 
         Player player1 = new Player(field1,1, ships1);
         Player player2 = new Player(field2,2, ships2);

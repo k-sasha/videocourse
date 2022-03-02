@@ -18,6 +18,7 @@ public class Field {
         for (int i=0; i<ship.halo().length; i++){
             field[ship.halo()[i].getX()][ship.halo()[i].getY()]=FieldPiece.HALO;
         }
+        this.printField();
     }
 
     public void fillEmpty(){
@@ -29,13 +30,18 @@ public class Field {
     }
 
     public void printField(){
-        System.out.println("        field "+id);
+        String[] array = {"0️⃣","1️⃣","2️⃣","3️⃣","4️⃣","5️⃣","6️⃣","7️⃣","8️⃣","9️⃣"};
+        int counter=0;
+        System.out.println("x        field "+id);
+        System.out.println("⬆️");
         for(FieldPiece [] i: field){
+            System.out.print(array[counter++]+" ");
             for(FieldPiece j: i){
                 System.out.print(j.getPicture() +" ");
             }
             System.out.println();
         }
+        System.out.println("⏹️ 0️⃣ 1️⃣ 2️⃣ 3️⃣ 4️⃣ 5️⃣ 6️⃣ 7️⃣ 8️⃣ 9️⃣ ➡️ y");
     }
 
 }
